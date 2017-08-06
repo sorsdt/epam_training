@@ -1,11 +1,13 @@
 package ua.epam.training.task1.exercise3;
 
+import ua.epam.training.task1.exercise3.data.StudentPersistence;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Students students = new Students();
         System.out.println("1. Получить список всех студентов");
         System.out.println("2. Получить список студентов-отличников 2-го курса");
@@ -14,6 +16,8 @@ public class Main {
         System.out.println("5. Упорядочить студентов в алфавитном порядке согласно фамилии");
         System.out.println("6. Упорядочить студентов по успеваемости");
         System.out.println("7. Пересоздать список студентов");
+        System.out.println("8. Сохранить список студентов в файл");
+        System.out.println("9. Загрузить список студентов из файла");
         exit:
         while (true) {
             System.out.print("Сделайте свой выбор или нажмите 0 для выхода:");
@@ -42,6 +46,14 @@ public class Main {
                 case "7":
                     students = new Students();
                     break;
+                case "8": {
+                    new StudentPersistence().saveStudents(students);
+                    break;
+                }
+                case "9": {
+                    students = new StudentPersistence().getStudents();
+                    break;
+                }
                 default:
                     System.out.println("Ошибочный ввод");
             }

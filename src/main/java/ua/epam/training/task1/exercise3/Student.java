@@ -1,6 +1,8 @@
 package ua.epam.training.task1.exercise3;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     private final static String MALE = "Мужской";
     private final static String FEMALE = "Женский";
     private String surname;

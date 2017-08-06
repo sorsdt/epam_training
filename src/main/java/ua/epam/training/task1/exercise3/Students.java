@@ -1,16 +1,17 @@
 package ua.epam.training.task1.exercise3;
 
-import ua.epam.training.task1.exercise3.data.StudentDataSourceImpl;
+import ua.epam.training.task1.exercise3.data.StudentGenerator;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class Students {
+public class Students implements Serializable {
 
     Student[] students = new Student[8];
 
     {
-        StudentDataSourceImpl studentDataSource = new StudentDataSourceImpl();
+        StudentGenerator studentDataSource = new StudentGenerator();
         for (int i = 0; i < students.length; i++) {
             students[i] = studentDataSource.getStudent();
         }

@@ -4,7 +4,7 @@ import ua.epam.training.task1.exercise3.Student;
 
 import java.util.Random;
 
-public class StudentDataSourceImpl implements StudentDataSource {
+public class StudentGenerator implements StudentData {
     static long studentID = 1;
     String maleSurnames[] = {"Бондаренко", "Гладкий", "Дворецкий", "Дударь", "Дяшкин", "Журавчак", "Иващенко", "Шевчук"};
     String maleNames[] = {"Олег", "Антон", "Владислав", "Дмитрий", "Артем", "Ярослав", "Алексей", "Денис", "Тарас"};
