@@ -1,0 +1,21 @@
+package ua.epam.training.task2.exercise1;
+
+import java.io.IOException;
+      /** First comment
+       first comment—line two*/
+public class Main {
+      /* Second comment */
+    public static void main(String[] args) throws IOException {
+        int a;
+        byte[] buffer = new byte[128];//TODO: Third comment
+        StringBuilder stringBuilder = new StringBuilder("");
+        while (true) {
+            a = System.in.read(buffer);
+            if (a < 0) break;
+            stringBuilder.append(new String(buffer, 0, a));
+            //TODO: Fourth comment
+        }
+        Parser parser = new Parser(stringBuilder.toString());
+        System.out.println(parser.removeComments());
+    }
+}
