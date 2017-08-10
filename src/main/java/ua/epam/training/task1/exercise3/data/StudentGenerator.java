@@ -18,8 +18,8 @@ public class StudentGenerator implements StudentData {
     public Student getStudent() {
         Student student = new Student();
         Random random = new Random();
-        student.setSex(random.nextBoolean());
-        if (student.getSex()) {
+        student.setSex(Gender.values()[random.nextInt(Gender.values().length)]);
+        if (student.getSex().equals(Gender.Male)) {
             student.setName(maleNames[(int) (random.nextDouble() * maleNames.length)]);
             student.setSurname(maleSurnames[(int) (random.nextDouble() * maleSurnames.length)]);
             student.setParentName(maleParentNames[(int) (random.nextDouble() * maleParentNames.length)]);

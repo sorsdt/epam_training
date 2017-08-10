@@ -1,30 +1,36 @@
 package ua.epam.training.task1.exercise3;
 
+import ua.epam.training.task1.exercise3.data.Gender;
+
 import java.io.Serializable;
 
 public class Student implements Serializable {
-    private final static String MALE = "Мужской";
-    private final static String FEMALE = "Женский";
     private String surname;
     private String name;
     private String parentName;
     private String country;
-    private boolean sex;
+    private Gender sex;
     private long studentID;
     private int course;
     private float performance;
 
+    public Gender getSex() {
+        return sex;
+    }
+
+    public void setSex(Gender sex) {
+        this.sex = sex;
+    }
+
     @Override
+
     public String toString() {
-        String gender;
-        if (sex) gender = MALE;
-        else gender = FEMALE;
         return "Student{" +
                 "surname='" + surname + '\'' +
                 ", name='" + name + '\'' +
                 ", parentName='" + parentName + '\'' +
                 ", country='" + country + '\'' +
-                ", gender='" + gender + '\'' +
+                ", gender='" + sex + '\'' +
                 ", studentID=" + studentID +
                 ", course=" + course +
                 ", performance=" + performance +
@@ -61,14 +67,6 @@ public class Student implements Serializable {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public boolean getSex() {
-        return sex;
-    }
-
-    public void setSex(boolean gender) {
-        this.sex = gender;
     }
 
     public long getStudentID() {
