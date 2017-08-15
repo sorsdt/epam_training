@@ -15,6 +15,7 @@ public class Main {
         String newString = "passed";
         field.set(originString, newString.toCharArray());
         System.out.println(originString);
+        System.out.println("test");//miracle
 
         System.out.println("Please make some input:");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
