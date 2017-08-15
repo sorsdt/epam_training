@@ -9,6 +9,7 @@ public class Main {
     private static final String SEARCH_MESSAGE = "Введите поисковый запрос:";
 
     public static void main(String[] args) throws IOException, ParseException {
+        System.out.println(Columns.First.name);
         Transport transport = new Transport();
         transport.printRoutes(transport.getRoutes());
         String searchString;

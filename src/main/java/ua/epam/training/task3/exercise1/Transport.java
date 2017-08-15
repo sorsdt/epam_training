@@ -10,13 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 class Transport {
-    private final static String FIRST_COLUMN = "Название";
-    private final static String SECOND_COLUMN = "Описание";
-    private final static String THIRD_COLUMN = "Начало";
-    private final static String FOURTH_COLUMN = "Конец";
-    private final static String FIFTH_COLUMN = "Стоимость";
-    private int nameWidth = FIRST_COLUMN.length();
-    private int descriptionWidth = SECOND_COLUMN.length();
+    private static int nameWidth = Columns.First.name.length();
+    private static int descriptionWidth = Columns.Second.name.length();
     private DateFormat format = new SimpleDateFormat("HH:mm");
     private Route routes[];
 
@@ -114,25 +109,25 @@ class Transport {
         return resultRoutes;
     }
 
-    void printRoutes(Route[] routes) {
+    static void printRoutes(Route[] routes) {
         if (routes.length == 0) {
             System.out.println("Нет данных для вывода");
         } else {
             StringBuilder stringBuilder = new StringBuilder("");
-            for (int i = 0; i < nameWidth - FIRST_COLUMN.length(); i++) {
+            for (int i = 0; i < nameWidth - Columns.First.name.length(); i++) {
                 stringBuilder.append(" ");
             }
-            stringBuilder.append(FIRST_COLUMN);
-            for (int i = 0; i <= descriptionWidth - SECOND_COLUMN.length(); i++) {
+            stringBuilder.append(Columns.First.name);
+            for (int i = 0; i <= descriptionWidth - Columns.Second.name.length(); i++) {
                 stringBuilder.append(" ");
             }
-            stringBuilder.append(SECOND_COLUMN);
+            stringBuilder.append(Columns.Second.name);
             stringBuilder.append(" ");
-            stringBuilder.append(THIRD_COLUMN);
+            stringBuilder.append(Columns.Third.name);
             stringBuilder.append(" ");
-            stringBuilder.append(FOURTH_COLUMN);
+            stringBuilder.append(Columns.Fourth.name);
             stringBuilder.append(" ");
-            stringBuilder.append(FIFTH_COLUMN);
+            stringBuilder.append(Columns.Fifth.name);
             System.out.println(stringBuilder.toString());
             for (Transport.Route route : routes) {
                 System.out.println(route);
