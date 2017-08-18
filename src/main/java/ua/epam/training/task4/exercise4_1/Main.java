@@ -1,4 +1,4 @@
-package ua.epam.training.ua.epam.training.task4.exercise4_1;
+package ua.epam.training.task4.exercise4_1;
 
 import java.io.BufferedReader;
 import java.io.IOException;

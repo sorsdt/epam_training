@@ -1,4 +1,4 @@
-package ua.epam.training.ua.epam.training.task4.exercise3_2;
+package ua.epam.training.task4.exercise3_2;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package ua.epam.training.ua.epam.training.task4.exercise2_2;
+package ua.epam.training.task4.exercise2_2;
 
 import java.lang.reflect.*;
 

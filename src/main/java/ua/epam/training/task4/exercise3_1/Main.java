@@ -1,4 +1,4 @@
-package ua.epam.training.ua.epam.training.task4.exercise3_1;
+package ua.epam.training.task4.exercise3_1;
 
 import java.util.List;
 import java.util.Set;
