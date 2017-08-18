@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
@@ -18,8 +17,8 @@ public class Main {
 
         if ((setsCountN > 2) && (pointsCountM > 2)) {
             int range = 2;
-            Set<Set> sets = new HashSet<>();
-            Set<Point> firstPointSet = null;
+            Set<Set<Point>> sets = new HashSet<>();
+            Set<Point> firstPointSet = new HashSet<>();
             Random random = new Random();
             int i = 0;
             while (i < setsCountN) {
@@ -46,9 +45,7 @@ public class Main {
             Point resultPoint = null;
             int resultPointCount = 0;
 
-            Iterator<Point> iterator = firstPointSet.iterator();
-            while (iterator.hasNext()) {
-                Point currentPoint = iterator.next();
+            for (Point currentPoint : firstPointSet) {
                 int localPointCounter = 0;
                 for (Set<Point> pointSet : sets) {
                     if (pointSet.contains(currentPoint)) {
