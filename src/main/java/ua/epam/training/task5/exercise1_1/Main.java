@@ -2,7 +2,7 @@ package ua.epam.training.task5.exercise1_1;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        Thread thread = new Thread() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 for (int i = 10; i > 0; i--) {
@@ -13,10 +13,9 @@ public class Main {
                         e.printStackTrace();
                     }
                 }
+                System.out.println("Bomb");
             }
-        };
+        });
         thread.start();
-        thread.join();
-        System.out.println("Bomb");
     }
 }
