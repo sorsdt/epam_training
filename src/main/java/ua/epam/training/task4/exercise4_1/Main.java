@@ -8,6 +8,11 @@ import java.util.Random;
 import java.util.Set;
 
 public class Main {
+
+    public static final int MIN_Range = 2;
+    public static final int MIN_SETS_COUNT_N = 2;
+    public static final int MIN_POINTS_COUNT_M = 2;
+
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Please input N:");
@@ -15,8 +20,8 @@ public class Main {
         System.out.println("Please input M:");
         final int pointsCountM = Integer.parseInt(reader.readLine());
 
-        if ((setsCountN > 2) && (pointsCountM > 2)) {
-            int range = 2;
+        if ((setsCountN > MIN_SETS_COUNT_N) && (pointsCountM > MIN_POINTS_COUNT_M)) {
+            int range = MIN_Range;
             Set<Set<Point>> sets = new HashSet<>();
             Set<Point> firstPointSet = new HashSet<>();
             Random random = new Random();
