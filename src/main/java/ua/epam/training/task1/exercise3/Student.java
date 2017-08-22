@@ -5,6 +5,7 @@ import ua.epam.training.task1.exercise3.data.Gender;
 import java.io.Serializable;
 
 public class Student implements Serializable {
+    transient private static final long serialVersionUID = 1L;
     private String surname;
     private String name;
     private String parentName;

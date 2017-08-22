@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Students implements Serializable {
-
+    private static final long serialVersionUID = 1L;
     Student[] students = new Student[8];
 
     {
