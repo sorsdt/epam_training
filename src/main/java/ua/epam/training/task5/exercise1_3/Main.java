@@ -1,16 +1,13 @@
 package ua.epam.training.task5.exercise1_3;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class Main {
-    public static final int WRITER_COUNT = 2;
-    public static final int READER_COUNT = 2;
-    public static final int THREAD_COUNT = WRITER_COUNT + READER_COUNT;
-    public static final int ITERATIONS = 1000;
-    public static final float DEFAULT_LOAD_FACTOR = 0.75f;
+    private static final int WRITER_COUNT = 2;
+    private static final int READER_COUNT = 2;
+    private static final int THREAD_COUNT = WRITER_COUNT + READER_COUNT;
+    private static final int ITERATIONS = 1000;
+    private static final float DEFAULT_LOAD_FACTOR = 0.75f;
 
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
@@ -23,28 +20,24 @@ public class Main {
             resourceHashMap.write(i, currentThreadId);
             resourceConcurrentHashMap.write(i, currentThreadId);
         }
-        long start = System.currentTimeMillis();
-        doWork(pool, futures, resourceHashMap);
-        long diff = System.currentTimeMillis() - start;
-        System.out.println("HashMap: " + diff);
-
-        start = System.currentTimeMillis();
-        doWork(pool, futures, resourceConcurrentHashMap);
-        diff = System.currentTimeMillis() - start;
-        System.out.println("ConcurrentHashMap: " + diff);
-
+        System.out.println("HashMap: " + doWork(pool, futures, resourceHashMap));
+        System.out.println("ConcurrentHashMap: " + doWork(pool, futures, resourceHashMap));
         pool.shutdownNow();
     }
 
-    private static void doWork(ExecutorService pool, Future[] futures, Resource resource) throws InterruptedException, ExecutionException {
+    private static long doWork(ExecutorService pool, Future[] futures, Resource resource) throws InterruptedException, ExecutionException {
+        CountDownLatch latch = new CountDownLatch(1);
         for (int i = 0; i < WRITER_COUNT; ++i) {
-            futures[i] = pool.submit(new Writer(resource, ITERATIONS));
+            futures[i] = pool.submit(new Writer(resource, ITERATIONS, latch));
         }
         for (int i = WRITER_COUNT; i < THREAD_COUNT; ++i) {
-            futures[i] = pool.submit(new Reader(resource, ITERATIONS));
+            futures[i] = pool.submit(new Reader(resource, ITERATIONS, latch));
         }
+        long start = System.currentTimeMillis();
+        latch.countDown();
         for (int i = 0; i < THREAD_COUNT; ++i) {
             futures[i].get();
         }
+        return System.currentTimeMillis() - start;
     }
 }
